@@ -11,7 +11,7 @@ const PORT = 3000; //Not necessary but it's good if you change the value cause y
 app.use(express.static('public')); //This will allow us to use the public folder at the root of the project
 
 //Using the imags folder at the route /images
-app.use(express.static('/images', express.static('images'))); //This will allow us to use the images folder at the route /images 
+app.use('/images', express.static('images')); //This will allow us to use the images folder at the route /images 
 
 //GET
 app.get('/', (request, response) => { //Usually https method takes two arguments, the path and the handler. The handler is the function that will be executed when the path is found

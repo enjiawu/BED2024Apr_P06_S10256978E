@@ -16,7 +16,7 @@ let books = [
 
  //Middleware
 //Parsing JSON data
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 //Parsing URL-ennconded Form data: to configure body-parser to handle URL-encoded form data. Setting extended: true allows parsing of nested objects within the form data.
 app.use(bodyParser.urlencoded({ extended: true }));

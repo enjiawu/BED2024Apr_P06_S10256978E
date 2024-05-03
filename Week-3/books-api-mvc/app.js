@@ -15,10 +15,7 @@ const requestLog = require("./middlewares/requestLog");
 // Define individual routes for each controller function
 app.get("/books", requestLog, booksController.getAllBooks);
 app.get("/books/:id", requestLog, booksController.getBookById);
-app.post("/books", requestLog, booksController.createBook);
-app.put("/books/:id", requestLog, booksController.updateBook);
 app.delete("/books/:id", requestLog, booksController.deleteBook);
-
 app.post("/books", requestLog, validateBook, booksController.createBook); // Add validateBook before createBook
 app.put("/books/:id", requestLog, validateBook, booksController.updateBook); // Add validateBook before updateBook
 

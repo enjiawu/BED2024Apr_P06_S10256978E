@@ -9,17 +9,18 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json()); // Parse incoming JSON data in request body
 app.use(bodyParser.urlencoded({ extended: true })); // For form data handling
 
-// Define individual routes for each controller function
-app.get("/books", booksController.getAllBooks);
-app.get("/books/:id", booksController.getBookById);
-app.post("/books", booksController.createBook);
-app.put("/books/:id", booksController.updateBook);
-app.delete("/books/:id", booksController.deleteBook);
-
 const validateBook = require("./middlewares/validateBook");
+const requestLog = require("./middlewares/requestLog");
 
-app.post("/books", validateBook, booksController.createBook); // Add validateBook before createBook
-app.put("/books/:id", validateBook, booksController.updateBook); // Add validateBook before updateBook
+// Define individual routes for each controller function
+app.get("/books", requestLog, booksController.getAllBooks);
+app.get("/books/:id", requestLog, booksController.getBookById);
+app.post("/books", requestLog, booksController.createBook);
+app.put("/books/:id", requestLog, booksController.updateBook);
+app.delete("/books/:id", requestLog, booksController.deleteBook);
+
+app.post("/books", requestLog, validateBook, booksController.createBook); // Add validateBook before createBook
+app.put("/books/:id", requestLog, validateBook, booksController.updateBook); // Add validateBook before updateBook
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

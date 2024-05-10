@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // For form data handling
 //Routes for GET requests
 app.get("/books", booksController.getAllBooks);
 app.get("/books/:id", booksController.getBookById);
+app.get("/books-count", booksController.getBooksCount);
 
 //Routes for POST requests
 app.post("/books", validateBook, booksController.createBook);

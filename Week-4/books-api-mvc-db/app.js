@@ -4,6 +4,7 @@ const sql = require("mssql"); // Assuming you've installed mssql
 const dbConfig = require("./dbConfig");
 const bodyParser = require("body-parser"); //Import body-parser
 const validateBook = require("./middlewares/validateBook"); //Import validateBook middleware
+const { getAllBooks } = require("./models/books");
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
